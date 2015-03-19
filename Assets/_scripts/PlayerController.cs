@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 ballSize;
 	private Vector3 upSize;
 	public GameObject collector;
-
 	void Start() {
 		count = 0;
 		ballSize = playerRigidBody.transform.localScale;
@@ -21,30 +20,23 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		float moveHorizontal = Input.GetAxis("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
-		Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-		playerRigidBody.AddForce (movement * speed * Time.deltaTime);		
 	}
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "PickUp") {
 			other.gameObject.GetComponent<Collider>().isTrigger = false;
 			other.gameObject.GetComponent<Collider>().enabled = false;
-			//other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-			//other.gameObject.GetComponent<Rigidbody>().useGravity = false;
 			SetUpSize(other.transform.localScale);
 			other.gameObject.transform.parent = collector.transform;
 			ballSize = ballSize + upSize;
 			playerRigidBody.transform.localScale = ballSize;
 			count++;
 			SetCountText();
-
 		}
 	}
 
 	void SetCountText() {
-		countText.text = "Size: " + ballSize.ToString ();
+		countText.text = "Size: " + ballSize.x.ToString ();
 	}
 
 	void SetUpSize(Vector3 other) {
