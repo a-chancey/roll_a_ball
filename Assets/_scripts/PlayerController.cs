@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 
 public class PlayerController : MonoBehaviour {
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 ballSize;
 	private Vector3 upSize;
 	public GameObject collector;
+	public List<GameObject> pickupArray = new List<GameObject>();
+
 	void Start() {
 		count = 0;
 		ballSize = playerRigidBody.transform.localScale;
@@ -20,13 +23,24 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+		if (pickupArray.Count >= 30) {
+			GameObject removeMe = new GameObject();
+			removeMe = pickupArray[0];
+			pickupArray.RemoveAt(0);
+			Destroy(removeMe);
+		}
+	}
+
+	void Update() {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "PickUp") {
+		if (other.gameObject.tag == "PickUp" ||other.gameObject.tag == "SmallPickup") {
 			other.gameObject.GetComponent<Collider>().isTrigger = false;
 			other.gameObject.GetComponent<Collider>().enabled = false;
-			SetUpSize(other.transform.localScale);
+			pickupArray.Add(other.gameObject);
+
+			SetGrowthSize(other.transform.localScale);
 			other.gameObject.transform.parent = collector.transform;
 			ballSize = ballSize + upSize;
 			playerRigidBody.transform.localScale = ballSize;
@@ -39,10 +53,9 @@ public class PlayerController : MonoBehaviour {
 		countText.text = "Size: " + ballSize.x.ToString ();
 	}
 
-	void SetUpSize(Vector3 other) {
-		upSize.x = (other.x / ballSize.x) / 2 ;
-		upSize.y = (other.y / ballSize.y) / 2;
-		upSize.z = (other.z / ballSize.z) / 2;
+	void SetGrowthSize(Vector3 other) {
+		upSize.x = (other.x / ballSize.x) / 4;
+		upSize.y = (other.y / ballSize.y) / 4;
+		upSize.z = (other.z / ballSize.z) / 4;
 	}
-
 }
