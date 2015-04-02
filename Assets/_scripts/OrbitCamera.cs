@@ -41,12 +41,14 @@ public class OrbitCamera : MonoBehaviour
 	
 	//Distance vector. 
 	private Vector3 _distanceVector;
-	
+
 	/**
   * Move the camera to its initial position.
   */
 	void Start ()
 	{
+
+
 		_distanceVector = new Vector3(0.0f,0.0f,-_distance);
 		
 		Vector2 angles = this.transform.localEulerAngles;
@@ -56,7 +58,12 @@ public class OrbitCamera : MonoBehaviour
 		this.Rotate(_x, _y);
 		
 	}
+
+	void Update() {
 	
+		}
+
+
 	/**
   * Rotate the camera or zoom depending on the input of the player.
   */
