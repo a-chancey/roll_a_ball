@@ -129,9 +129,11 @@ public class OrbitCamera : MonoBehaviour
   */
 	void ZoomIn()
 	{
-		_distance -= _zoomStep;
-		_distanceVector = new Vector3(0.0f,0.0f,-_distance);
-		this.Rotate(_x,_y);
+		if (_distance > 3) {
+			_distance -= _zoomStep;
+			_distanceVector = new Vector3 (0.0f, 0.0f, -_distance);
+			this.Rotate (_x, _y);
+		}
 	}
 	
 	/**
@@ -140,9 +142,11 @@ public class OrbitCamera : MonoBehaviour
   */
 	void ZoomOut()
 	{
-		_distance += _zoomStep;
-		_distanceVector = new Vector3(0.0f,0.0f,-_distance);
-		this.Rotate(_x,_y);
+		if (_distance < 9) {
+			_distance += _zoomStep;
+			_distanceVector = new Vector3 (0.0f, 0.0f, -_distance);
+			this.Rotate (_x, _y);
+		}
 	}
 	
 } //End class
