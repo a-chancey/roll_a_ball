@@ -50,11 +50,11 @@
      <Compile Include="Assets\_scripts\Occlusion.cs" />
      <Compile Include="Assets\_scripts\OrbitCamera.cs" />
      <Compile Include="Assets\_scripts\Pickup.cs" />
+     <Compile Include="Assets\_scripts\PickupObject.cs" />
      <Compile Include="Assets\_scripts\PlayerController.cs" />
      <Compile Include="Assets\_scripts\ScaleCutout.cs" />
      <Compile Include="Assets\_scripts\SetRenderQueue.cs" />
      <Compile Include="Assets\_scripts\movement.cs" />
-     <Compile Include="Assets\_scripts\rotator.cs" />
      <Compile Include="Assets\lookAtPlayer.cs" />
      <None Include="Assets\shaders\Transparency Projector.shader" />
      <None Include="Assets\shaders\Transparency Projectors.shader" />

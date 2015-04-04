@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void SetGrowthSize(Vector3 other) {
-		upSize.x = (other.x / ballSize.x) / 4;
-		upSize.y = (other.y / ballSize.y) / 4;
-		upSize.z = (other.z / ballSize.z) / 4;
+		upSize.x = (other.x / ballSize.x) / 8;
+		upSize.y = (other.y / ballSize.y) / 8;
+		upSize.z = (other.z / ballSize.z) / 8;
 	}
 }
