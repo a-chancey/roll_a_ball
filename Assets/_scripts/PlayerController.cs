@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		if (pickupArray.Count >= 30) {
+		if (pickupArray.Count >= 65) {
 			GameObject removeMe = new GameObject();
 			removeMe = pickupArray[0];
 			pickupArray.RemoveAt(0);
@@ -54,8 +54,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void SetGrowthSize(Vector3 other) {
-		upSize.x = (other.x / ballSize.x) / 8;
-		upSize.y = (other.y / ballSize.y) / 8;
-		upSize.z = (other.z / ballSize.z) / 8;
+		float min = new float ();
+		min = Mathf.Min (other.x, Mathf.Min (other.y, other.z));
+		upSize.x = (min / ballSize.x) / 8;
+		upSize.y = (min / ballSize.y) / 8;
+		upSize.z = (min / ballSize.z) / 8;
 	}
 }

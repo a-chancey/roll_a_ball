@@ -142,7 +142,7 @@ public class OrbitCamera : MonoBehaviour
   */
 	void ZoomOut()
 	{
-		if (_distance < 9) {
+		if (_distance < 11) {
 			_distance += _zoomStep;
 			_distanceVector = new Vector3 (0.0f, 0.0f, -_distance);
 			this.Rotate (_x, _y);

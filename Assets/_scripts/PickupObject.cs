@@ -7,6 +7,8 @@ public class PickupObject : MonoBehaviour {
 	private float volume;
 	void Start() {
 		playerObject = GameObject.FindGameObjectWithTag ("Player");
+		pickup = this.gameObject;
+		pickup.gameObject.tag = "PickUp";
 		volume = pickup.transform.localScale.x * pickup.transform.localScale.y * pickup.transform.localScale.z;
 	}
 
